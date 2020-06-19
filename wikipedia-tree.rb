@@ -15,8 +15,11 @@ document = Nokogiri::HTML.parse(html, nil, charset)
 
 # 検索キーワードの抽出と出力
 keyword = document.xpath('//h1').inner_text
-puts keyword
 
 # 最初のpタグを抽出し、その中のaタグを出力
-next_link = document.xpath('//div[@class="mw-parser-output"]/p').first.xpath(".//a").inner_text
-puts next_link
+next_link = document.xpath('//div[@class="mw-parser-output"]/p').first.xpath(".//a")
+
+# 最初のキーワードとそのリンク先を結合して出力
+next_link.each do |word|
+  puts "#{keyword} ー #{word.inner_text}"
+end
