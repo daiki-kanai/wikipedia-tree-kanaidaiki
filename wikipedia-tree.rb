@@ -1,8 +1,9 @@
 require 'open-uri'
 require 'nokogiri'
 
-# スクレイピング先のURL
-url = 'https://ja.wikipedia.org/wiki/%E3%83%AA%E3%83%B3%E3%82%B4'
+# スクレイピング先のURLを入力
+puts '最初のキーワードのURLを入力してください'
+url = gets.chomp
 
 charset = nil
 html = open(url) do |f|
