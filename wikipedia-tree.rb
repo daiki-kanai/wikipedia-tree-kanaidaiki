@@ -1,25 +1,28 @@
 require 'open-uri'
 require 'nokogiri'
 
+def make_html(source)
+  charset = nil
+
+  @html = open(source) do |f|
+  @charset = f.charset # 文字種別を取得
+  f.read # htmlを読み込んで変数htmlに渡す
+  end
+end
+
 # スクレイピング先のURLを入力
 puts '最初のキーワードのURLを入力してください'
 url = gets.chomp
-
-charset = nil
-html = open(url) do |f|
-  charset = f.charset # 文字種別を取得
-  f.read # htmlを読み込んで変数htmlに渡す
-end
+make_html(url)
 
 # htmlをパースしてオブジェクトを作成
-document = Nokogiri::HTML.parse(html, nil, charset)
+document = Nokogiri::HTML.parse(@html, nil, @charset)
 
 # 概要の箇所を抽出し、keywordに代入
 first_keyword = document.xpath('//h1').inner_text
 
 node1 = []
 node1 << first_keyword
-# puts node1
 
 # 最初のpタグを抽出し、その中のaタグを出力
 second_link = document.xpath('//div[@class="mw-parser-output"]/p').first.xpath('.//a')
@@ -34,19 +37,11 @@ new_link = "https://ja.wikipedia.org/#{second_link.attribute('href').value}"
 
 
 # 2周目
-
 url = new_link
-# 取れてきてるか確認
-# puts url
-
-charset = nil
-html = open(url) do |f|
-  charset = f.charset # 文字種別を取得
-  f.read # htmlを読み込んで変数htmlに渡す
-end
+make_html(url)
 
 # htmlをパースしてオブジェクトを作成
-document = Nokogiri::HTML.parse(html, nil, charset)
+document = Nokogiri::HTML.parse(@html, nil, @charset)
 
 # 最初のpタグを抽出し、その中のaタグを出力
 third_link = document.xpath('//div[@class="mw-parser-output"]/p').first.xpath('.//a')
@@ -62,14 +57,9 @@ new_link = "https://ja.wikipedia.org/#{third_link.attribute('href').value}"
 
 # 3周目
 url = new_link
+make_html(url)
 
-charset = nil
-html = open(url) do |f|
-  charset = f.charset # 文字種別を取得
-  f.read # htmlを読み込んで変数htmlに渡す
-end
-
-document = Nokogiri::HTML.parse(html, nil, charset)
+document = Nokogiri::HTML.parse(@html, nil, @charset)
 forth_link = document.xpath('//div[@class="mw-parser-output"]/p').first.xpath('.//a')
 node4 = []
 node4 << forth_link.first.inner_text
