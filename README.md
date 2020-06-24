@@ -18,34 +18,19 @@ ruby 2.5.1
 
 ## 動作確認
 
-### １.当ディレクトリのクローンをお願いします
->>||
-git clone https://github.com/daiki-kanai/wikipedia-tree-kanaidaiki.git
-||<
+### ０.Nokogiriのインストール（未インストールの場合のみ）
+スクレイピングにRubyのライブラリの『Nokogiri』を用いているので、インストールをお願いします。<br>
+$ gem install nokogiri
 
-### ２.助っ人を探す
- 作業を依頼したい人を探すために、Googleマップにて自分の近くにユーザーがいないか確認します。<br>
- 自分の位置がマップの中央になるよう設定しています。
-![マップ画像](READMEpictures/mapPage.png)
+### １.当ディレクトリのクローン
+$ git clone https://github.com/daiki-kanai/wikipedia-tree-kanaidaiki.git
 
-### ３.それぞれのユーザーのマイページにて情報を確認
- Googleマップ上のピンまたは、サイドバーの一覧からユーザーをクリックすると、そのユーザーのマイページに遷移します。
-"チャットを始める"ボタンを押下することでチャットが開始されます。
-![マップ画像](READMEpictures/myPage.png)
-
-### ４.チャットをする
- 見つけたユーザーとの情報交換および依頼内容のすり合わせのためにチャットを行います。
-
-#### 初めてのチャット相手の場合
- 新しいチャットルームが作成されます。
-![チャット画像（新規）](READMEpictures/newChatPage.png)
-
-#### 過去にチャットをした相手の場合
- すでにチャットルームは作成されているので、過去のチャット内容が反映されています。
-![チャット画像](READMEpictures/chatPage.png)
-
-
-## 工夫したポイント
-
+### ２.プログラムの実行
+当該ディレクトリにて<br>
+$ ruby first-link.rb<br>
+と入力し実行をお願いします。<br>
+"最初のキーワードのURLを入力してください"<br>
+と応答があるので、適当なWikipediaページのURLを入力し確認をお願いします。<br>
+3回リンクを辿り終了としています。
 
 ---
