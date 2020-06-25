@@ -26,11 +26,11 @@ $ gem install nokogiri
 $ git clone https://github.com/daiki-kanai/wikipedia-tree-kanaidaiki.git
 
 ### ２.プログラムの実行
-当該ディレクトリにて<br>
+当該ディレクトリに移動後<br>
 $ ruby first-link.rb<br>
 と入力し実行をお願いします。<br>
 "最初のキーワードのURLを入力してください"<br>
 と応答があるので、適当なWikipediaページのURLを入力し確認をお願いします。<br>
-3回リンクを辿り終了としています。
+進行度の欄にも記載済みですが、概要に出てくる最初のリンクを3回辿り終了としています。
 
 ---
